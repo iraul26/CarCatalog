@@ -1,0 +1,51 @@
+<div style="text-align:center">
+  <h1 style="font-family:cursive, arial, sans-serif">
+    {{ title }}
+  </h1>
+</div>
+<!--navbar -->
+<nav class="navbar navbar-expand-lg bg-dark" style="padding: 0.2rem 0 0.2rem 0;" data-bs-theme="dark">
+  <div class="container-fluid">
+    <img src="assets/charger.png" routerLink="/home" style="width: 60px;" alt="logo">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor02">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Makes</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" *ngFor="let make of carMakes" [routerLink]="['/cars', make]">{{ make }}</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="/create">Create Car</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/about">About</a>
+        </li>
+      </ul>
+      <form class="d-flex" (ngSubmit)="searchCar()">
+        <input class="form-control me-sm-2" type="search" placeholder="Search car model" [(ngModel)]="model" name="model" required>
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<!--dynamic page content -->
+<div class="app-container">
+<div class="content">
+  <router-outlet></router-outlet>
+</div>
+
+<!--footer -->
+<footer class="bg-dark text-light py-3 mt-auto">
+  <div class="container text-center">
+    <p>&copy; 2024 The Car Catalog. All rights reserved.</p>
+    <a routerLink="#" class="text-light">Privacy Policy</a>
+    | <a routerLink="#" class="text-light">Terms of Service</a>
+  </div>
+</footer>
+</div>
+

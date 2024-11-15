@@ -1,0 +1,15 @@
+
+  <!--car model of searched car -->
+  <div *ngIf="car" class="mt-4">
+    <div class="card">
+      <img class="card-img-top" [src]="car.url" alt="Car image">
+      <div class="card-body">
+        <h5 class="card-title">{{ car.year }} {{ car.make }} {{ car.model }}</h5>
+        <p class="card-text">{{ car.description }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!car" class="mt-4">
+    <p>No car found with that model.</p>
+  </div>

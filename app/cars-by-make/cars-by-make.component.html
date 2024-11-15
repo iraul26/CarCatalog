@@ -1,0 +1,44 @@
+<!--cars of each make cards -->
+<div class="container">
+  <h2 style="text-align: center;">Cars of Make: {{ make }}</h2>
+
+  <div class="row">
+    <div class="col-md-4" *ngFor="let car of cars">
+      <div class="card">
+        <img class="card-img-top" [src]="car.url" alt="Car image">
+        <div class="card-body">
+          <h5 class="card-title">{{ car.year }} {{ car.make }} {{ car.model }}</h5>
+          <p class="card-text">{{ car.description }}</p>
+          <button type="button" (click)="deleteCar(car.id)" class="btn btn-outline-danger">Delete</button>
+          <button type="button" (click)="openUpdateModal(car)" class="btn btn-outline-primary">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--modal for updating car -->
+<div class="modal" tabindex="-1" [ngClass]="{'show': showModal}">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Update Car</h5>
+        <button type="button" class="btn-close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="updateCar()">
+          <div class="mb-3">
+            <label for="carDescription" class="form-label">Car Description</label>
+            <textarea id="carDescription" class="form-control" [(ngModel)]="selectedCar.description" name="description"
+              required></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="carUrl" class="form-label">Car Image URL</label>
+            <input id="carUrl" type="text" class="form-control" [(ngModel)]="selectedCar.url" name="url" required />
+          </div>
+          <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

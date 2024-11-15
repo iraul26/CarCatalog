@@ -1,0 +1,35 @@
+<!--create a car form -->
+<div align="center" style="margin-left:50px;margin-right:50px" *ngIf="!wasSubmitted">
+  <form (ngSubmit)="onSubmit()" #createForm="ngForm">
+      <div class="form-group">
+        <label for="make">Make</label>
+        <input id="make" type="text" class="form-control" aria-describedby="helpMake" placeholder="Enter the make of the car" required [(ngModel)]="car.make" name="make">
+      </div>
+      <div class="form-group">
+        <label for="model">Model</label>
+        <input id="model" type="text" class="form-control" aria-describedby="helpModel" placeholder="Enter the model of the car" required [(ngModel)]="car.model" name="model">
+      </div>
+      <div class="form-group">
+        <label for="year">Year</label>
+        <input id="year" type="text" class="form-control" aria-describedby="helpYear" placeholder="Enter the year of the car" required [(ngModel)]="car.year" name="year">
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input id="description" type="text" class="form-control" aria-describedby="helpDescription" placeholder="Enter the description of the car" required [(ngModel)]="car.description" name="description">
+       </div>
+      <div class="form-group">
+          <label for="url">Image Filename</label>
+          <input id="url" type="text" class="form-control" aria-describedby="helpUrl" placeholder="Enter the image filename for the car" required [(ngModel)]="car.url" name="url">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+  </div>
+  <!--once car is created, tell user -->
+  <div  *ngIf="wasSubmitted">
+    <div class="alert alert-dismissible alert-success">
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      You successfully created a car!
+    </div>
+  </div>
+
